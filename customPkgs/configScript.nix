@@ -95,7 +95,7 @@ echo "Saving changes from $(pwd)..."
 
 version_file="$config_dir/version.txt"
 
-new_version=$(update_config_version "$version_file")
+
 
 if [ -n "$1" ]; then
   case "$1" in
@@ -105,6 +105,7 @@ if [ -n "$1" ]; then
       if [ "$arg" = "-np" ]; then
       echo "no push made"
       else
+      new_version=$(update_config_version "$version_file")
       eval "git add ."
      git commit -m "version $new_version"
       eval "git push origin home"
@@ -129,6 +130,7 @@ if [ -n "$1" ]; then
       if [ "$arg" = "-np" ]; then
       echo "no push made"
       else
+      new_version=$(update_config_version "$version_file")
        eval "git add ."
      git commit -m "version $new_version"
        eval "git push origin system"
@@ -139,6 +141,7 @@ if [ -n "$1" ]; then
   esac
 else
   eval "sudo nixos-rebuild switch"
+  new_version=$(update_config_version "$version_file")
   eval "git add ."
  git commit -m "version $new_version"
   eval "git push origin system"
