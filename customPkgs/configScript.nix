@@ -58,7 +58,7 @@ if [ -n "$1" ]; then
       ;;
       "pkgs")
       echo "accessing pkgs configuration..."
-      destination="/etc/nixos/setPkgs.nix"
+      destination="/etc/nixos/modules/setPkgs.nix"
       ;;
        "im" | "imports")
       echo "accessing import configuration..."
@@ -66,15 +66,15 @@ if [ -n "$1" ]; then
       ;;
        "login")
       echo "accessing login configuration..."
-      destination="/etc/nixos/login.nix"
+      destination="/etc/nixos/modules/login.nix"
       ;;
       "boot")
       echo "accessing boot configuration..."
-      destination="/etc/nixos/boot.nix"
+      destination="/etc/nixos/modules/boot.nix"
       ;;
        "dsk" | "DE")
       echo "accessing Desktop Environment configuration..."
-      destination="/etc/nixos/DE.nix"
+      destination="/etc/nixos/modules/DE.nix"
       ;;
     *)
       echo "accessing main configuration..."
