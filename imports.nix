@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./login.nix
     ./setPkgs.nix
+    ./boot.nix
     #Custom pkgs---------------------
     ./customPkgs/chrome.nix
     ./customPkgs/configScript.nix
