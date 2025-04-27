@@ -1,0 +1,2 @@
+my Nixos home configuration.
+
