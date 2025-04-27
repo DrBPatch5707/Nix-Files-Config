@@ -36,6 +36,14 @@ update_config_version() {
   fi
 
   local new_patch=$((patch + 1))
+  if [ "$new_patch" -gt 9 ]; then
+    new_patch=0
+    minor=$((minor + 1))
+  fi
+  if [ "$minor" -gt 9 ]; then
+    minor=0
+    major=$((major + 1))
+  fi
   local new_version="v$major.$minor.$new_patch"
   echo "$major.$minor.$new_patch" > "$version_file" # Write without the leading 'v'
   echo "$new_version" # Return with the leading 'v'
