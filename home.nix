@@ -5,6 +5,7 @@ let
 aliases = {
   ll = "ls -l";
   bd = "cd ..";
+  df = "df -h";
   };
 in
 {
