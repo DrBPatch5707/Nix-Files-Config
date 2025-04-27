@@ -28,6 +28,10 @@
           "org/gnome/desktop/interface" = {
             clock-show-weekday = true;
           };
+          "org/gnome/desktop/background" = {
+            picture-uri = "../resources/WYD-background.jpg";
+            picture-options = "scaled";
+          };
         };
       }
     ];
