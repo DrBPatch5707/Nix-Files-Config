@@ -1,6 +1,5 @@
 {config, lib, pkgs, ...}:
 {
-
  environment.systemPackages = with pkgs; [
      # Place packages here
      vim
@@ -19,6 +18,15 @@
      sdl3
      SDL2
      git-credential-manager
+     emacs
+     ripgrep
+     findutils
+     coreutils
+     hackgen-nf-font
+     gh
+     fd
+     pandoc
+     shellcheck
      #gnome-shell-extensions
    ];
 

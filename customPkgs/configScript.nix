@@ -9,7 +9,7 @@ origin=$(pwd)
 extensions_dir="$HOME/.vscode/extensions"
 user_data_dir="$HOME/.bpatch-root"
 destination="/etc/nixos/configuration.nix"
-config_dir=" "
+config_dir="/etc/nixos"
 
 if [ -n "$1" ]; then
   case "$1" in
@@ -17,6 +17,18 @@ if [ -n "$1" ]; then
       destination="$HOME/.config/home-manager/home.nix"
       config_dir="$HOME/.config/home-manager" 
       echo "accessing home-manager..."
+      ;;
+      "pkgs")
+      echo "accessing pkgs configuration..."
+      destination="/etc/nixos/setPkgs.nix"
+      ;;
+       "im" | "imports")
+      echo "accessing import configuration..."
+      destination="/etc/nixos/imports.nix"
+      ;;
+       "login")
+      echo "accessing login configuration..."
+      destination="/etc/nixos/login.nix"
       ;;
     *)
       echo "accessing main configuration..."
@@ -40,10 +52,22 @@ if [ -n "$1" ]; then
     "home")
       eval "home-manager switch"
       ;;
-    *)
+    "test")
       echo "building in test mode..."
       eval "sudo nixos-rebuild test"
       ;;
+    *)
+       if [ -n "$2" ]; then
+      case "$1" in
+       *)
+        echo "building in test mode..."
+        eval "sudo nixos-rebuild test"
+        ;;
+      esac
+      else
+       eval "sudo nixos-rebuild switch"
+       fi
+    ;;
   esac
 else
   eval "sudo nixos-rebuild switch"
