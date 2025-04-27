@@ -6,7 +6,7 @@
       set -euo pipefail 
 
       if [ "$#" -ge 1 ]; then
-        /home/bpatch/.config/emacs/bin/doom "$@"
+       sudo /home/bpatch/.config/emacs/bin/doom "$@"
       else
         echo "doom must be provided with at least one argument" >&2
         exit 1 
