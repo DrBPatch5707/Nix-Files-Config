@@ -7,6 +7,7 @@
     ./modules/login.nix
     ./modules/setPkgs.nix
     ./modules/boot.nix
+    ./modules/DE.nix
     #Custom pkgs---------------------
     ./customPkgs/chrome.nix
     ./customPkgs/configScript.nix
