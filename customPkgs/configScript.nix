@@ -68,6 +68,10 @@ if [ -n "$1" ]; then
       echo "accessing login configuration..."
       destination="/etc/nixos/login.nix"
       ;;
+      "boot")
+      echo "accessing boot configuration..."
+      destination="/etc/nixos/boot.nix"
+      ;;
     *)
       echo "accessing main configuration..."
       config_dir="/etc/nixos" 
