@@ -27,6 +27,7 @@
      fd
      pandoc
      shellcheck
+     virtualbox
      gnome-shell-extensions
    ];
 
