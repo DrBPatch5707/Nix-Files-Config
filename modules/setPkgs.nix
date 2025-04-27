@@ -27,7 +27,7 @@
      fd
      pandoc
      shellcheck
-     #gnome-shell-extensions
+     gnome-shell-extensions
    ];
 
 }  

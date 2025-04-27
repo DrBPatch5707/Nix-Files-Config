@@ -19,14 +19,17 @@
         '';
     };
         
-        services.dconf = {
-            enable = true;
-            settings = {
-                "org/gnome/desktop/background" = {
-                    picture-uri = "../resources/WYD-background.jpg";
-                    picture-options = "scaled"; # Or "stretched", "centered", "tiled", etc.
-                };
-            };
-
+     programs.dconf = {
+    enable = true;
+    profiles.user.databases = [
+      {
+        lockAll = true; # prevents overriding
+        settings = {
+          "org/gnome/desktop/interface" = {
+            clock-show-weekday = true;
+          };
         };
+      }
+    ];
+  };
 }
