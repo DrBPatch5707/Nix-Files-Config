@@ -9,23 +9,36 @@ extensions_dir="$HOME/.vscode/extensions"
 user_data_dir="$HOME/.bpatch-root"
 destination="/etc/nixos/configuration.nix"
 config_dir="/etc/nixos"
+
 # Function to update the configuration version and return the new version
 update_config_version() {
   local version_file="$1"
 
-  # Create the version file if it doesn't exist and initialize to v0.0.0
+  # Initialize if the file doesn't exist
   if [ ! -f "$version_file" ]; then
-    echo "v0.0.0" > "$version_file"
-    echo "v0.2.2" # Return the initial incremented version
+    echo "0.2.2" > "$version_file"
+    echo "v0.2.3" # Return the initial incremented version with 'v'
     return
   fi
 
   local current_version=$(cat "$version_file")
   IFS='.' read -r major minor patch <<< "$current_version"
+
+  # Provide default values using if conditions (Nix-friendly)
+  if [ -z "$major" ]; then
+    major="0"
+  fi
+  if [ -z "$minor" ]; then
+    minor="0"
+  fi
+  if [ -z "$patch" ]; then
+    patch="0"
+  fi
+
   local new_patch=$((patch + 1))
   local new_version="v$major.$minor.$new_patch"
-  echo "$new_version" > "$version_file"
-  echo "$new_version" # Return the new version
+  echo "$major.$minor.$new_patch" > "$version_file" # Write without the leading 'v'
+  echo "$new_version" # Return with the leading 'v'
 }
 
 if [ -n "$1" ]; then
