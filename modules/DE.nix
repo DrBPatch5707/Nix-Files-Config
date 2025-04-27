@@ -18,5 +18,12 @@
             binding='<Super>l'
             '';
         };
-        
+         
+         dconf.settings = {
+             "org/gnome/desktop/background" = {
+                picture-uri = "../resources/WYD-background.jpg";
+                picture-options = "scaled"; # Or "stretched", "centered", "tiled", etc.
+             };
+        };
+
     }
