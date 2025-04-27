@@ -72,6 +72,10 @@ if [ -n "$1" ]; then
       echo "accessing boot configuration..."
       destination="/etc/nixos/boot.nix"
       ;;
+       "dsk" | "DE")
+      echo "accessing Desktop Environment configuration..."
+      destination="/etc/nixos/DE.nix"
+      ;;
     *)
       echo "accessing main configuration..."
       config_dir="/etc/nixos" 
