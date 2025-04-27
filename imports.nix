@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./login.nix
-    ./setPkgs.nix
-    ./boot.nix
+    ./inports/hardware-configuration.nix
+    ./inports/login.nix
+    ./inports/setPkgs.nix
+    ./inports/boot.nix
     #Custom pkgs---------------------
     ./customPkgs/chrome.nix
     ./customPkgs/configScript.nix
