@@ -56,7 +56,7 @@ if [ -n "$1" ]; then
       config_dir="$HOME/.config/home-manager" 
       echo "accessing home-manager..."
       ;;
-      "pkgs")
+      "pkgs" | "pkg")
       echo "accessing pkgs configuration..."
       destination="/etc/nixos/modules/setPkgs.nix"
       ;;

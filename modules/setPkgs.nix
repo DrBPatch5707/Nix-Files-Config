@@ -6,7 +6,7 @@
      wget
      google-chrome
      vscode
-     gnome.gnome-tweaks
+     gnome-tweaks
      dconf
      git
      cmake
@@ -14,7 +14,7 @@
      gcc
      curl
      blackbox-terminal
-     gnome.nautilus
+     nautilus
      sdl3
      SDL2
      git-credential-manager
