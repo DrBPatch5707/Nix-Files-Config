@@ -97,7 +97,7 @@ if [ -n "$1" ]; then
       if [ "$arg" = "-np" ]; then
       echo "no push made"
       else
-      eval "git add ."
+      eval "git add --exclude=result ."
      git commit -m "version $new_version"
       eval "git push origin home"
       fi
@@ -121,7 +121,7 @@ if [ -n "$1" ]; then
       if [ "$arg" = "-np" ]; then
       echo "no push made"
       else
-       eval "git add ."
+       eval "git add --exclude=result ."
      git commit -m "version $new_version"
        eval "git push origin system"
        fi
@@ -131,7 +131,7 @@ if [ -n "$1" ]; then
   esac
 else
   eval "sudo nixos-rebuild switch"
-  eval "git add ."
+  eval "git add --exclude=result ."
  git commit -m "version $new_version"
   eval "git push origin system"
 fi
