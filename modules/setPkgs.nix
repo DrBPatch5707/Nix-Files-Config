@@ -11,6 +11,7 @@
      git
      cmake
      discord
+     gdb
      gcc
      curl
      blackbox-terminal
