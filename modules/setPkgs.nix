@@ -29,7 +29,7 @@
      fd
      pandoc
      shellcheck
-     virtualbox
+     qemu
      gnome-shell-extensions
    ];
 
