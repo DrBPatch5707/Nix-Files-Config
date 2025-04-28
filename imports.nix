@@ -8,9 +8,10 @@
     ./modules/setPkgs.nix
     ./modules/boot.nix
     ./modules/DE.nix
+    ./modules/shell.nix
     #Custom pkgs---------------------
     ./customPkgs/chrome.nix
     ./customPkgs/configScript.nix
   ];
 }
-#If you add an import don't forget to edit the configScript.nix as necessary.
+#If you add a module or custom pkg don't forget to edit the configScript.nix as necessary.
