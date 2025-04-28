@@ -31,6 +31,9 @@
      shellcheck
      qemu
      gnome-shell-extensions
+     libmpc-dev
+     nasm
+     gcc-multilib
    ];
 
 }  
