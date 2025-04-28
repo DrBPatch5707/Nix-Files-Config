@@ -87,7 +87,7 @@ in
   #  /etc/profiles/per-user/bpatch/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+     EDITOR = "code";
   };
 
   # Let Home Manager install and manage itself.
