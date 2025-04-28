@@ -12,7 +12,8 @@
 
 
     config = {
-
+      
+      virtualisation.virtualbox.enable = true;
       users.extraGroups.vboxusers.members = [ "bpatch" ];
 
       networking.hostName = "nixos"; # Define your hostname.
