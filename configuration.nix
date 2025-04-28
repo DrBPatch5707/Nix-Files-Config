@@ -13,7 +13,7 @@
 
     config = {
       
-      boot.kernelModules = [ "vboxdrv" "vboxnetflt" "vboxnetadp" "vboxpci" ];
+      
       users.extraGroups.vboxusers.members = [ "bpatch" ];
 
       networking.hostName = "nixos"; # Define your hostname.
