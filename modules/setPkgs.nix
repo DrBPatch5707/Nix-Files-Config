@@ -29,7 +29,7 @@
      gnome-shell-extensions
      mpc
      nasm
-     gcc-multilib
+     gcc_multi
    ];
 
 }  
