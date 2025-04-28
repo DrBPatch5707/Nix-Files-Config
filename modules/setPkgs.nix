@@ -2,7 +2,6 @@
 {
  environment.systemPackages = with pkgs; [
      # Place packages here
-     vim
      wget
      google-chrome
      vscode
@@ -22,16 +21,13 @@
      git-credential-manager
      emacs
      ripgrep
-     findutils
      coreutils
-     hackgen-nf-font
      gh
-     fd
      pandoc
      shellcheck
      qemu
      gnome-shell-extensions
-     libmpc-dev
+     mpc
      nasm
      gcc-multilib
    ];
