@@ -11,7 +11,6 @@
      cmake
      discord
      gdb
-     gcc
      curl
      blackbox-terminal
      nautilus
@@ -30,7 +29,6 @@
      mpc
      nasm
      gcc_multi
-     binutils
    ];
 
 }  
