@@ -14,7 +14,6 @@
     config = {
       
       boot.kernelModules = [ "vboxdrv" "vboxnetflt" "vboxnetadp" "vboxpci" ];
-      virtualisation.virtualbox.enable = true;
       users.extraGroups.vboxusers.members = [ "bpatch" ];
 
       networking.hostName = "nixos"; # Define your hostname.
