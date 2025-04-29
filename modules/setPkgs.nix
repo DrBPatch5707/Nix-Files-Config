@@ -14,8 +14,6 @@
      curl
      blackbox-terminal
      nautilus
-     sdl3
-     SDL2
      gnumake
      git-credential-manager
      emacs
