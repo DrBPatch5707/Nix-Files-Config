@@ -27,6 +27,7 @@
      mpc
      nasm
      gcc_multi
+     SDL2
    ];
 
 }  
