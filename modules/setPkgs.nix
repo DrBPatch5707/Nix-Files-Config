@@ -29,6 +29,7 @@
      mpc
      nasm
      gcc_multi
+     gcc-x86_64-elf
    ];
 
 }  
