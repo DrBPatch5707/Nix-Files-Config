@@ -95,7 +95,8 @@ echo "Saving changes from $(pwd)..."
 
 version_file="$config_dir/version.txt"
 
-
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/key.txt
 
 if [ -n "$1" ]; then
   case "$1" in
