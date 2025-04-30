@@ -30,7 +30,6 @@
      mpc
      nasm
      gcc_multi
-     nix-mode
    ];
 
 }  
