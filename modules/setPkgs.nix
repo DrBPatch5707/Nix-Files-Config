@@ -5,6 +5,7 @@
      wget
      google-chrome
      vscode
+     kdevelop
      gnome-tweaks
      dconf
      git
