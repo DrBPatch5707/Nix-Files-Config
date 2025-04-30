@@ -3,12 +3,24 @@
 environment.systemPackages = with pkgs; [
 (pkgs.writeShellScriptBin "config" ''
 #!/run/current-system/sw/bin/bash
-
+#<---Global--->#
 origin=$(pwd)
 extensions_dir="$HOME/.vscode/extensions"
 user_data_dir="$HOME/.bpatch-root"
 destination="/etc/nixos/configuration.nix"
 config_dir="/etc/nixos"
+is_push=""
+#<---Global--->#
+
+
+
+testArgs(){
+for arg in "$@"; do
+      if [ "$arg" = "-np" ]; then
+      is_push="-np"
+      fi
+      done
+}
 
 # Function to update the configuration version and return the new version
 update_config_version() {
@@ -49,6 +61,8 @@ update_config_version() {
   echo "$new_version" # Return with the leading 'v'
 }
 
+
+openEditor(){
 if [ -n "$1" ]; then
   case "$1" in
     "home")
@@ -88,30 +102,49 @@ fi
 
 command="sudo code -w --no-sandbox --user-data-dir \"$user_data_dir\" --extensions-dir \"$extensions_dir\" \"$destination\""
       eval "$command"
-      
-cd "$config_dir" # Change to the correct directory before applying changes
+}
 
-echo "Saving changes from $(pwd)..."
 
-version_file="$config_dir/version.txt"
 
+
+
+
+
+
+
+publish() {
+if [ "$is_push" = "-np" ]; then
+  echo "no push made..."
+  else
+  version_file="$config_dir/version.txt"
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/key.txt
+  eval "ssh-add ~/.ssh/key.txt"
+  new_version=$(update_config_version "$version_file")
+  eval "git add ."
+  git commit -m "version $new_version"
+  case "$1" in
+    "home")
+    eval "git push origin home"
+    ;;
+    "system")
+    eval "git push origin system"
+    ;;
+    *)
+    echo "error: invalid argument past to publish function..."
+    ;;
+  esac
+  fi
+}
 
+
+
+processChanges(){
+echo "Saving changes from $(pwd)..."
 if [ -n "$1" ]; then
   case "$1" in
     "home")
       eval "home-manager switch"
-      for arg in "$@"; do
-      if [ "$arg" = "-np" ]; then
-      echo "no push made"
-      else
-      new_version=$(update_config_version "$version_file")
-      eval "git add ."
-     git commit -m "version $new_version"
-      eval "git push origin home"
-      fi
-      done
+      publish "$1"
       ;;
     "test")
       echo "building in test mode..."
@@ -119,36 +152,36 @@ if [ -n "$1" ]; then
       ;;
     *)
        if [ -n "$2" ]; then
-      case "$1" in
-       *)
+      case "$1" in #room for future args
+       "test")
         echo "building in test mode..."
         eval "sudo nixos-rebuild test"
+        ;;
+        *)
+        echo "invalid option..."
         ;;
       esac
       else
        eval "sudo nixos-rebuild switch"
-       for arg in "$@"; do
-      if [ "$arg" = "-np" ]; then
-      echo "no push made"
-      else
-      new_version=$(update_config_version "$version_file")
-       eval "git add ."
-     git commit -m "version $new_version"
-       eval "git push origin system"
-       fi
-       done
-       fi
+      publish "system"
+      fi
     ;;
   esac
 else
   eval "sudo nixos-rebuild switch"
-  new_version=$(update_config_version "$version_file")
-  eval "git add ."
- git commit -m "version $new_version"
-  eval "git push origin system"
+ publish "system"
 fi
+}
 
+main(){
+testArgs "$@"
+openEditor "$@"
+cd "$config_dir" # Change to the correct directory before applying changes
+processChanges "$@"
 cd "$origin"
+}
+
+main "$@"
   '')
     ];
 }
