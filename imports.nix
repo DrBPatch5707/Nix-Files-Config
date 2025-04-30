@@ -13,4 +13,5 @@
     ./customPkgs/configScript.nix
   ];
 }
+
 #If you add a module or custom pkg don't forget to edit the configScript.nix as necessary.
