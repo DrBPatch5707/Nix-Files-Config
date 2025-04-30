@@ -31,10 +31,6 @@ in
   programs.bash = {
     enable = true;
     shellAliases = aliases;
-    initExtra = ''
-        eval "$(ssh-agent -s)"\n   
-         ssh-add ~/.ssh/key.txt
-    '';
   };
 
 
