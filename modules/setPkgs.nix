@@ -10,6 +10,8 @@
      dconf
      git
      cmake
+     ninja
+     indent
      discord
      gdb
      curl
