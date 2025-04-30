@@ -33,7 +33,7 @@ in
     shellAliases = aliases;
     initExtra = ''
         eval "$(ssh-agent -s)"\n   
-         ssh-add ~/.ssh/your_private_key
+         ssh-add ~/.ssh/key.txt
     '';
   };
 
